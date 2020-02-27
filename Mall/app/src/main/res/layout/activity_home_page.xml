@@ -5,16 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomePageActivity">
-
-
+    <com.bw.mall.customview.MyViewPager
+        android:id="@+id/homeVp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <LinearLayout
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:background="@mipmap/bg_homepage_bottom"
+        android:padding="10dp"
         android:layout_height="80dp">
 
+        <ImageView
+            android:id="@+id/imgHome"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/common_tab_home_xhdpi"/>
+        <ImageView
+            android:id="@+id/imgUfo"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/common_tab_circle_n"/>
+        <ImageView
+            android:id="@+id/imgShopping"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/commom_tab_xhdpi"
+            />
+        <ImageView
+            android:id="@+id/imgList"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/common_tab_list_n_xhdpi"/>
+        <ImageView
+            android:id="@+id/imgMy"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/common_tab_my_n_xhdpi"/>
 
     </LinearLayout>
 
