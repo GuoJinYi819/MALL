@@ -1,11 +1,14 @@
 package com.bw.mall.net;
 
+import com.bw.mall.bean.CommodiListBean;
 import com.bw.mall.bean.LoginBean;
 import com.bw.mall.bean.RegisterBean;
+import com.bw.mall.bean.XBannerBean;
 
 import java.util.Map;
 
 import io.reactivex.Observable;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
 
@@ -26,4 +29,11 @@ public interface ApiService {
     @POST("user/v1/register")
     Observable<RegisterBean> registerUser(@QueryMap Map<String,String> param);
 
+    //Banner数据
+    @GET("commodity/v1/bannerShow")
+    Observable<XBannerBean> getXBanner();
+
+    //首页多条目数据
+    @GET("commodity/v1/commodityList")
+    Observable<CommodiListBean> getCommodityList();
 }

@@ -16,8 +16,9 @@ import androidx.fragment.app.Fragment;
  * @version 创建时间：2020/2/23 16:08
  * @Description: 用途：完成特定功能
  */
-public abstract class BaseFragment<p extends BasePresenter> extends Fragment {
-    protected p presenter;
+public abstract class BaseFragment<p extends BasePresenter,p2 extends BasePresenter> extends Fragment {
+    protected p presenter1;
+    protected p2 presenter2;
     protected View view;
 
     @Nullable
@@ -31,9 +32,13 @@ public abstract class BaseFragment<p extends BasePresenter> extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        presenter = initPresenter();
-        if (presenter != null) {
-            presenter.attachView(this);
+        presenter1 = initPresenter1();
+        presenter2 = initPresenter2();
+        if (presenter2 != null) {
+            presenter2.attachView(this);
+        }
+        if (presenter1 != null) {
+            presenter1.attachView(this);
         }
         initView(view);
         initListener();
@@ -49,13 +54,18 @@ public abstract class BaseFragment<p extends BasePresenter> extends Fragment {
     //初始化数据
     protected abstract void initData();
     //初始化presenter层
-    protected abstract p initPresenter();
+    protected abstract p initPresenter1();
+    protected abstract p2 initPresenter2();
 
     @Override
     public void onDetach() {
         super.onDetach();
-        if (presenter != null) {
-            presenter.detachView();
+        //防止内存泄露
+        if (presenter1 != null) {
+            presenter1.detachView();
+        }
+        if (presenter2 != null) {
+            presenter2.detachView();
         }
     }
 }

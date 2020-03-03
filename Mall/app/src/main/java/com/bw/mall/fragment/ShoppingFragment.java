@@ -35,7 +35,13 @@ public class ShoppingFragment extends BaseFragment {
     }
 
     @Override
-    protected BasePresenter initPresenter() {
+    protected BasePresenter initPresenter1() {
         return null;
     }
+
+    @Override
+    protected BasePresenter initPresenter2() {
+        return null;
+    }
+
 }

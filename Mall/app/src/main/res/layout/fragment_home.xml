@@ -2,10 +2,82 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="首页"
-        android:gravity="center"
-        />
+<!--  顶部栏  -->
+        <ScrollView
+            android:scrollbars="none"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                android:background="#F8F8FF"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.stx.xhb.xbanner.XBanner
+                    android:layout_marginRight="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:id="@+id/xbHome"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp">
+
+                </com.stx.xhb.xbanner.XBanner>
+                <RelativeLayout
+                    android:background="#F8F8FF"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="24dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvNews"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:text="aa"
+                        android:textColor="#ff7f57"
+                        android:textSize="16sp" />
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="24dp"
+                        android:layout_height="12dp"
+                        android:src="@mipmap/home_btn_moer_pink_n_xxhdpi">
+
+                    </ImageView>
+                </RelativeLayout>
+            </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/homeNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="186dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:background="@color/colorAccent"
+                    android:layout_height="100dp">
+
+                </TextView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:background="@color/colorAccent"
+                    android:layout_height="100dp">
+
+                </TextView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:background="@color/colorAccent"
+                    android:layout_height="100dp">
+
+                </TextView>
+            </LinearLayout>
+
+
+        </ScrollView>
 </LinearLayout>
