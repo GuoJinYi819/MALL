@@ -68,7 +68,7 @@
             android:password="true"
             android:focusable="auto"
             />
-        <ImageButton
+        <ImageView
             android:id="@+id/ib_eye"
             android:layout_width="24dp"
             android:layout_height="24dp"

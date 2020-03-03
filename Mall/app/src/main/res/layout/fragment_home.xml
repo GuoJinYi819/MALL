@@ -3,7 +3,46 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 <!--  顶部栏  -->
+    <com.bw.mall.customview.MySeachView
+        android:id="@+id/mySeach"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+    </com.bw.mall.customview.MySeachView>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSeachView"
+                android:background="#fff"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+            <TextView
+                android:id="@+id/tvAAAA"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:text="啥也没有了"
+                >
+
+            </TextView>
+        </LinearLayout>
+    </ScrollView>
         <ScrollView
+            android:id="@+id/sollView"
             android:scrollbars="none"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -12,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <LinearLayout
-                android:background="#F8F8FF"
+                android:background="#FFF"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -25,10 +64,11 @@
 
                 </com.stx.xhb.xbanner.XBanner>
                 <RelativeLayout
-                    android:background="#F8F8FF"
+                    android:background="@mipmap/bitmap"
                     android:layout_marginTop="30dp"
+                    android:paddingLeft="24dp"
+                    android:paddingRight="24dp"
                     android:layout_width="wrap_content"
-                    android:layout_marginRight="24dp"
                     android:layout_height="wrap_content">
 
                     <TextView
@@ -41,8 +81,8 @@
                         android:textColor="#ff7f57"
                         android:textSize="16sp" />
                     <ImageView
-                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:layout_width="24dp"
                         android:layout_height="12dp"
                         android:src="@mipmap/home_btn_moer_pink_n_xxhdpi">
@@ -51,33 +91,102 @@
                 </RelativeLayout>
             </LinearLayout>
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:background="#FFF"
                     android:id="@+id/homeNews"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="186dp">
 
                 </androidx.recyclerview.widget.RecyclerView>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:background="@color/colorAccent"
-                    android:layout_height="100dp">
+                <RelativeLayout
+                    android:background="@mipmap/bitmap2"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="24dp"
+                    android:paddingRight="24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-                </TextView>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:background="@color/colorAccent"
-                    android:layout_height="100dp">
+                    <TextView
+                        android:id="@+id/tvmlss"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:text="aa"
+                        android:textColor="#ff7f57"
+                        android:textSize="16sp" />
+                    <ImageView
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_width="24dp"
+                        android:layout_height="12dp"
+                        android:src="@mipmap/home_btn_more_purple_n_xhdpi">
 
-                </TextView>
-                <TextView
+                    </ImageView>
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:background="#FFF"
+                    android:id="@+id/homeMlss"
+                    android:paddingLeft="24dp"
+                    android:paddingRight="24dp"
                     android:layout_width="match_parent"
-                    android:background="@color/colorAccent"
-                    android:layout_height="100dp">
+                    android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <RelativeLayout
+                    android:background="@mipmap/pzsh_bg"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="24dp"
+                    android:paddingRight="24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvPzsh"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:text="aa"
+                        android:textColor="#ff7f57"
+                        android:textSize="16sp" />
+                    <ImageView
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_width="24dp"
+                        android:layout_height="12dp"
+                        android:src="@mipmap/pzsh_mor22e">
+
+                    </ImageView>
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:background="#FFF"
+                    android:id="@+id/homePzsh"
+                    android:paddingLeft="24dp"
+                    android:paddingRight="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:gravity="center"
+                    android:textColor="#fff"
+                    android:textSize="18sp"
+                    android:text="默认展示内容没了 你还想要啥"
+                    >
 
                 </TextView>
             </LinearLayout>
 
 
         </ScrollView>
+
+
 </LinearLayout>

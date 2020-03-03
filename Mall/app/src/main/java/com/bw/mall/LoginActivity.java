@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +43,7 @@ public class LoginActivity extends BaseActivity<LoginPresenterImpl> implements I
     @BindView(R.id.et_pwd)
     EditText etPwd;
     @BindView(R.id.ib_eye)
-    ImageButton ibEye;
+    ImageView ibEye;
     @BindView(R.id.check_box)
     CheckBox checkBox;
     @BindView(R.id.tv_register)

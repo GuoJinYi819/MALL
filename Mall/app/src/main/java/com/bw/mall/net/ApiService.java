@@ -1,6 +1,7 @@
 package com.bw.mall.net;
 
 import com.bw.mall.bean.CommodiListBean;
+import com.bw.mall.bean.CommodityByKeyBean;
 import com.bw.mall.bean.LoginBean;
 import com.bw.mall.bean.RegisterBean;
 import com.bw.mall.bean.XBannerBean;
@@ -36,4 +37,9 @@ public interface ApiService {
     //首页多条目数据
     @GET("commodity/v1/commodityList")
     Observable<CommodiListBean> getCommodityList();
+
+    //根据关键字查询
+    @GET("commodity/v1/findCommodityByKeyword")
+    Observable<CommodityByKeyBean> getCommodityByKeyWord(@QueryMap Map<String,String> param);
+
 }

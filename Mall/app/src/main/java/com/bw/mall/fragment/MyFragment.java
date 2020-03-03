@@ -44,4 +44,9 @@ public class MyFragment extends BaseFragment {
         return null;
     }
 
+    @Override
+    protected BasePresenter initPresenter3() {
+        return null;
+    }
+
 }

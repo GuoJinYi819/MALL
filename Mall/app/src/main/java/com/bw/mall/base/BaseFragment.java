@@ -16,9 +16,10 @@ import androidx.fragment.app.Fragment;
  * @version 创建时间：2020/2/23 16:08
  * @Description: 用途：完成特定功能
  */
-public abstract class BaseFragment<p extends BasePresenter,p2 extends BasePresenter> extends Fragment {
+public abstract class BaseFragment<p extends BasePresenter,p2 extends BasePresenter,p3 extends BasePresenter> extends Fragment {
     protected p presenter1;
     protected p2 presenter2;
+    protected p3 presenter3;
     protected View view;
 
     @Nullable
@@ -34,11 +35,15 @@ public abstract class BaseFragment<p extends BasePresenter,p2 extends BasePresen
         super.onActivityCreated(savedInstanceState);
         presenter1 = initPresenter1();
         presenter2 = initPresenter2();
+        presenter3 = initPresenter3();
         if (presenter2 != null) {
             presenter2.attachView(this);
         }
         if (presenter1 != null) {
             presenter1.attachView(this);
+        }
+        if (presenter3 != null) {
+            presenter3.attachView(this);
         }
         initView(view);
         initListener();
@@ -56,6 +61,7 @@ public abstract class BaseFragment<p extends BasePresenter,p2 extends BasePresen
     //初始化presenter层
     protected abstract p initPresenter1();
     protected abstract p2 initPresenter2();
+    protected abstract p3 initPresenter3();
 
     @Override
     public void onDetach() {
@@ -66,6 +72,9 @@ public abstract class BaseFragment<p extends BasePresenter,p2 extends BasePresen
         }
         if (presenter2 != null) {
             presenter2.detachView();
+        }
+        if (presenter3 != null) {
+            presenter3.detachView();
         }
     }
 }

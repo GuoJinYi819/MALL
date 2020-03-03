@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +36,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenterImpl> implem
     @BindView(R.id.edit_pwd)
     EditText editPwd;
     @BindView(R.id.ib_eye1)
-    ImageButton ibEye1;
+    ImageView ibEye1;
     @BindView(R.id.tv_register)
     TextView tvRegister;
     @BindView(R.id.btn_register)
