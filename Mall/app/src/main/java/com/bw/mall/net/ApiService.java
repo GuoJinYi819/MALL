@@ -1,5 +1,6 @@
 package com.bw.mall.net;
 
+import com.bw.mall.base.OrderListByBean;
 import com.bw.mall.bean.CommodiListBean;
 import com.bw.mall.bean.CommodityByKeyBean;
 import com.bw.mall.bean.LoginBean;
@@ -41,5 +42,10 @@ public interface ApiService {
     //根据关键字查询
     @GET("commodity/v1/findCommodityByKeyword")
     Observable<CommodityByKeyBean> getCommodityByKeyWord(@QueryMap Map<String,String> param);
+
+
+    //根据商品状态查询
+    @GET("order/verify/v1/findOrderListByStatus")
+    Observable<OrderListByBean> getOrderList(@QueryMap Map<String,String> param);
 
 }

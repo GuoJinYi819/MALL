@@ -7,9 +7,13 @@ import com.orhanobut.logger.Logger;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -50,6 +54,18 @@ public class RetrofitUtil {
                 .readTimeout(5, TimeUnit.SECONDS)
                 .writeTimeout(5, TimeUnit.SECONDS)
                 .addInterceptor(httpLoggingInterceptor)
+                .addInterceptor(new Interceptor() {
+                    @NotNull
+                    @Override
+                    public Response intercept(@NotNull Chain chain) throws IOException {
+                        Request request = chain.request();
+                        Request.Builder builder = request.newBuilder();
+                        builder.addHeader("userId","28055");
+                        builder.addHeader("sessionId","158330484470628055");
+                        Request newBuild = builder.build();
+                        return chain.proceed(newBuild);
+                    }
+                })
                 .build();
         //初始化 retrofit
         retrofit = new Retrofit.Builder()
