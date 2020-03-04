@@ -2,13 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerDisplay"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+      <LinearLayout
+          android:orientation="vertical"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/recyclerDisplay"
+           android:layout_marginTop="20dp"
+           android:paddingLeft="24dp"
+           android:paddingRight="24dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
 
-    </androidx.recyclerview.widget.RecyclerView>
+       </androidx.recyclerview.widget.RecyclerView>
+       <TextView
+           android:paddingTop="20dp"
+           android:gravity="center_horizontal"
+           android:text="啥也没了"
+           android:layout_width="match_parent"
+           android:layout_height="300dp"/>
+
+      </LinearLayout>
+   </ScrollView>
 </LinearLayout>
