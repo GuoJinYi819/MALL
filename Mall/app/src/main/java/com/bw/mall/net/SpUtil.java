@@ -17,6 +17,10 @@ public class SpUtil {
     public static final String SP_PHONE="phone";
     public static final String SP_PWD="pwd";
     public static final String SP_BOOLEAN="boolean";
+    public static final String SP_USERID = "userId";
+    public static final String SP_SESSIONID = "sessionId";
+    public static final String SP_HEADPIC = "headpic";
+    public static final String SP_NICKNAME = "nickname";
     //单例模式
     private static SpUtil instance;
     private final SharedPreferences sp = App.context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);

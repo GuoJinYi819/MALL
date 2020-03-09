@@ -135,6 +135,10 @@ public class LoginActivity extends BaseActivity<LoginPresenterImpl> implements I
     @Override
     public void loginViewSuccess(LoginBean bean) {
         String message = bean.getMessage();
+        LoginBean.ResultBean result = bean.getResult();
+
+
+
         if (message.contains("登陆失败,手机号或密码错误")) {
             Toast.makeText(this, ""+message, Toast.LENGTH_SHORT).show();
         } else if(message.contains("登录成功")){
@@ -154,6 +158,15 @@ public class LoginActivity extends BaseActivity<LoginPresenterImpl> implements I
             }else {
                 instance.setCacheData(SpUtil.SP_BOOLEAN,checked);
             }
+            int userId = result.getUserId();
+            String sessionId = result.getSessionId();
+            //存入sp
+            instance.setCacheData( SpUtil.SP_USERID,String.valueOf( userId ) );
+            instance.setCacheData( SpUtil.SP_SESSIONID,sessionId );
+            instance.setCacheData( SpUtil.SP_HEADPIC,result.getHeadPic() );
+            instance.setCacheData( SpUtil.SP_NICKNAME,result.getNickName() );
+
+
             Intent intent = new Intent(LoginActivity.this,HomePageActivity.class);
             startActivity(intent);
             //销毁当前页面

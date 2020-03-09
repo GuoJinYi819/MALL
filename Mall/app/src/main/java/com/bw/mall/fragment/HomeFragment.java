@@ -7,6 +7,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.bw.mall.R;
 import com.bw.mall.adapter.HomeKeyWordAdapter;
 import com.bw.mall.adapter.HomeMlssAdapter;
@@ -167,6 +169,7 @@ public class HomeFragment extends BaseFragment<BannerPresenterImpl, CommodityLis
             public void loadBanner(XBanner banner, View view, int position) {
                 Glide.with(getContext())
                         .load(stringList.get(position))
+                        .apply( RequestOptions.diskCacheStrategyOf( DiskCacheStrategy.RESOURCE ) )
                         .into((ImageView) view);
             }
         });

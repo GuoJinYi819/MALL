@@ -60,8 +60,18 @@ public class RetrofitUtil {
                     public Response intercept(@NotNull Chain chain) throws IOException {
                         Request request = chain.request();
                         Request.Builder builder = request.newBuilder();
-                        builder.addHeader("userId","28055");
-                        builder.addHeader("sessionId","158332612526928055");
+                        //取出
+                        SpUtil instance = SpUtil.getInstance();
+                        String userid = instance.getCachData( SpUtil.SP_USERID );
+                        boolean empty = TextUtils.isEmpty( userid );
+                        if (!empty) {
+                            builder.addHeader(SpUtil.SP_USERID,userid);
+                        }
+                        String sessionid = instance.getCachData( SpUtil.SP_SESSIONID );
+                        boolean empty1 = TextUtils.isEmpty( sessionid );
+                        if (!empty1) {
+                            builder.addHeader(SpUtil.SP_SESSIONID,sessionid);
+                        }
                         Request newBuild = builder.build();
                         return chain.proceed(newBuild);
                     }

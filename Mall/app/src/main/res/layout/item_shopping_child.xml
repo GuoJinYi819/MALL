@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:paddingLeft="28dp"
+    android:paddingRight="10dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:background="@drawable/f"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:id="@+id/checkBoxChild"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </CheckBox>
+        <ImageView
+            android:id="@+id/ivPic"
+            android:src="@color/colorAccent"
+            android:layout_width="81dp"
+            android:layout_height="81dp">
+        </ImageView>
+        <LinearLayout
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="81dp">
+            <TextView
+                android:id="@+id/tvCommodityName"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:textSize="12sp"
+                android:text="哈哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈哈好的发货哈发啊还得分"
+                android:textColor="#666666"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp">
+
+            </TextView>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp">
+                <TextView
+                    android:id="@+id/tvPrice"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textColor="#ff0606"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:text="aaaa"
+                    android:layout_height="40dp">
+
+                </TextView>
+                <TextView
+                    android:text="加减器"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp">
+
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -2,10 +2,56 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:background="#000"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="我的"
-        android:gravity="center"
-        />
+        android:layout_height="280dp">
+        <ImageView
+            android:id="@+id/ivHeadPic1"
+            android:src="@mipmap/ic_launcher_round"
+            android:scaleType="fitXY"
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+        </ImageView>
+        <LinearLayout
+            android:layout_marginTop="140dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/d"
+            android:layout_height="140dp">
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/ivHeadPic2"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/ic_launcher_round"
+            android:layout_width="120dp"
+            android:layout_height="120dp">
+        </ImageView>
+        <TextView
+            android:id="@+id/tvNickName"
+            android:layout_below="@id/ivHeadPic2"
+            android:text="哈哈哈哈"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="#ff00"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listView"
+        android:background="#ffffff"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+
+
 </LinearLayout>
