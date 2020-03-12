@@ -10,10 +10,12 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bw.mall.R;
 import com.bw.mall.bean.EventBean;
 import com.bw.mall.bean.ShoppingCartBean;
+import com.bw.mall.customview.MyCounterView;
 import com.bw.mall.net.GlideUtil;
 
 import org.greenrobot.eventbus.EventBus;
@@ -33,7 +35,6 @@ public class ShoppingCartAdapter extends BaseExpandableListAdapter {
     private List<ShoppingCartBean.ResultBean> result = new ArrayList<>();
     //上下文
     private Context context;
-
 
     //构造传参
     public ShoppingCartAdapter(List<ShoppingCartBean.ResultBean> result, Context context) {
@@ -163,6 +164,7 @@ public class ShoppingCartAdapter extends BaseExpandableListAdapter {
             viewHolder.tvCommodityName = convertView.findViewById( R.id.tvCommodityName );
             viewHolder.tvPrice = convertView.findViewById( R.id.tvPrice );
             viewHolder.checkBoxChild = convertView.findViewById( R.id.checkBoxChild);
+            viewHolder.mycounterView = convertView.findViewById( R.id.mycounterView);
             convertView.setTag( viewHolder );
         }else {
             viewHolder = (MyChildViewHolder) convertView.getTag();
@@ -201,6 +203,25 @@ public class ShoppingCartAdapter extends BaseExpandableListAdapter {
             }
         } );
 
+        //获取当前商品数量
+        int count = shoppingCartListBean.getCount();
+        viewHolder.mycounterView.tvNumber.setText( String.valueOf( count ) );
+
+        viewHolder.mycounterView.setOnNumberListener( new MyCounterView.OnNumberListener() {
+            @Override
+            public void onNumber(int num) {
+                //设置上当前数量
+                shoppingCartListBean.setCount( num );  //这里埋一颗炸弹
+                //传递当前外层集合
+                EventBean eventBean = new EventBean();
+                eventBean.setResult( result );
+                //发送Eventbus
+                EventBus.getDefault().postSticky( eventBean );
+
+            }
+        } );
+
+
         return convertView;
     }
 
@@ -209,6 +230,7 @@ public class ShoppingCartAdapter extends BaseExpandableListAdapter {
         private TextView tvCommodityName;
         private TextView tvPrice;
         private CheckBox checkBoxChild;
+        private MyCounterView mycounterView;
     }
 
     //可选择
@@ -220,4 +242,6 @@ public class ShoppingCartAdapter extends BaseExpandableListAdapter {
     public List<ShoppingCartBean.ResultBean> getResult() {
         return result;
     }
+
+
 }

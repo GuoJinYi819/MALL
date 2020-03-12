@@ -166,8 +166,9 @@ public class ShoppingFragment extends BaseFragment<ShoppingCartPresenterImpl, Ba
                 boolean isChecked = shoppingCartListBean.getIsChecked();
                 //根据选中的来累加金额
                 if (isChecked) {
-                    sum++;
-                    int price = shoppingCartListBean.getPrice();
+                    sum+=shoppingCartListBean.getCount();
+                    //总金额 =  单价*数量
+                    int price = shoppingCartListBean.getPrice()*shoppingCartListBean.getCount();
                     money += price;
                 }
             }

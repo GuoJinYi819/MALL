@@ -1,6 +1,7 @@
 package com.bw.mall.net;
 
 import com.bw.mall.base.OrderListByBean;
+import com.bw.mall.bean.CircleListBean;
 import com.bw.mall.bean.CommodiListBean;
 import com.bw.mall.bean.CommodityByKeyBean;
 import com.bw.mall.bean.LoginBean;
@@ -56,5 +57,9 @@ public interface ApiService {
     //购物车数据
     @GET("order/verify/v1/findShoppingCart")
     Observable<ShoppingCartBean> getShoppingCart();
+
+    //圈子
+    @GET("circle/v1/findCircleList")
+    Observable<CircleListBean> getCircleList(@QueryMap Map<String,String> param);
 
 }

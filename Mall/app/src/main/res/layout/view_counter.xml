@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="wrap_content"
+    android:layout_height="30dp">
+    <TextView
+        android:id="@+id/tvReduce"
+        android:text="-"
+        android:textColor="#666666"
+        android:textSize="14sp"
+        android:gravity="center_horizontal"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content">
+    </TextView>
+    <TextView
+        android:id="@+id/btnNumber"
+        android:text="1"
+        android:background="#F2F2F2"
+        android:gravity="center"
+        android:layout_width="31dp"
+        android:layout_height="wrap_content">
+    </TextView>
+    <TextView
+        android:id="@+id/tvAdd"
+        android:text="+"
+        android:textColor="#666666"
+        android:textSize="14sp"
+        android:gravity="center_horizontal"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content">
+    </TextView>
+</LinearLayout>

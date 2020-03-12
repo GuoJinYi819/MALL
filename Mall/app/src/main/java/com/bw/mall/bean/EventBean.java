@@ -12,6 +12,15 @@ import java.util.List;
  */
 public class EventBean implements Serializable {
    private List<ShoppingCartBean.ResultBean> result;
+    private int count;
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getCount() {
+        return count;
+    }
 
     public void setResult(List<ShoppingCartBean.ResultBean> result) {
         this.result = result;

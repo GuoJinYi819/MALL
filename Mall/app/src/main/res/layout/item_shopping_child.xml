@@ -56,13 +56,13 @@
                     android:layout_height="40dp">
 
                 </TextView>
-                <TextView
-                    android:text="加减器"
+                <com.bw.mall.customview.MyCounterView
+                    android:id="@+id/mycounterView"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="30dp">
 
-                </TextView>
+                </com.bw.mall.customview.MyCounterView>
             </LinearLayout>
         </LinearLayout>
 
