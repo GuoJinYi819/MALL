@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.bw.mall.App;
 import com.bw.mall.R;
+import com.bw.mall.adapter.CircleListAdapter;
 import com.bw.mall.base.NBaseFragment;
 import com.bw.mall.bean.CircleListBean;
 import com.bw.mall.mvp.circlelist.CirclePresenterImpl;
@@ -24,6 +25,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -46,7 +48,8 @@ public class CircleFragment extends NBaseFragment<CirclePresenterImpl> implement
     @BindView(R.id.refreshLayout)
     SmartRefreshLayout refreshLayout;
     private Unbinder unbind;
-
+    private CircleListAdapter adapter;
+    private int i=1;
     @Override
     protected int initLayoutId() {
         return R.layout.fragment_circle;
@@ -70,11 +73,22 @@ public class CircleFragment extends NBaseFragment<CirclePresenterImpl> implement
 
     @Override
     protected void initListener() {
+
         //设置下拉刷新
         refreshLayout.setOnRefreshListener( new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                Toast.makeText( getContext(), "1", Toast.LENGTH_SHORT ).show();
+
+                HashMap<String, String> hashMap = new HashMap<>();
+                String s = String.valueOf( i );
+                hashMap.put( "page",s);
+                if (i==3) {
+                    i=0;
+                }else {
+                    i++;
+                }
+                hashMap.put("count","5");
+                getData( hashMap );
                 refreshLayout.finishRefresh( true );
             }
         } );
@@ -95,7 +109,7 @@ public class CircleFragment extends NBaseFragment<CirclePresenterImpl> implement
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put( "page","1" );
         hashMap.put("count","5");
-        presenter.getCircleList( hashMap );
+        getData( hashMap );
     }
 
     @Override
@@ -108,6 +122,15 @@ public class CircleFragment extends NBaseFragment<CirclePresenterImpl> implement
         if (bean != null) {
             List<CircleListBean.ResultBean> result = bean.getResult();
             if (result != null) {
+                if (adapter == null) {
+                    adapter = new CircleListAdapter( result, getContext() );
+                    recyclerCircle.setAdapter( adapter );
+                }else {
+                    adapter = null;
+                    List<CircleListBean.ResultBean> result1 = bean.getResult();
+                    adapter = new CircleListAdapter( result1, getContext() );
+                    recyclerCircle.setAdapter( adapter );
+                }
 
             }
         }
@@ -125,5 +148,10 @@ public class CircleFragment extends NBaseFragment<CirclePresenterImpl> implement
         if (unbind != null) {
             unbind.unbind();
         }
+    }
+
+    private void getData(HashMap<String,String> param){
+
+        presenter.getCircleList( param );
     }
 }

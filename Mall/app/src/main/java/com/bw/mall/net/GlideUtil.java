@@ -3,6 +3,8 @@ package com.bw.mall.net;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.bw.mall.App;
 
 import retrofit2.http.POST;
@@ -32,6 +34,13 @@ public class GlideUtil {
     public void setImg(String path, ImageView iv){
         Glide.with( App.context )
                 .load( path)
+                .into( iv );
+    }
+
+    public void setFilletImg(String path, ImageView iv){
+        Glide.with( App.context )
+                .load( path)
+                .apply( RequestOptions.bitmapTransform( new RoundedCorners( 30 ) ) )
                 .into( iv );
     }
 }
