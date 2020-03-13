@@ -59,6 +59,7 @@ public class CircleFragment extends NBaseFragment<CirclePresenterImpl> implement
     protected void initView(View view) {
         unbind = ButterKnife.bind( this, view );
 
+        adapter = null;
         //设置头部刷新样式    全屏水滴
         refreshLayout.setRefreshHeader(new DeliveryHeader( App.context ) );
         //设置底部加载样式
@@ -78,17 +79,16 @@ public class CircleFragment extends NBaseFragment<CirclePresenterImpl> implement
         refreshLayout.setOnRefreshListener( new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-
+                //刷新时请求第一页数据     ---服务器有新数据时 按照时间排序 展示在首层位置
+                i=1;
                 HashMap<String, String> hashMap = new HashMap<>();
+                //转型String
                 String s = String.valueOf( i );
                 hashMap.put( "page",s);
-                if (i==3) {
-                    i=0;
-                }else {
-                    i++;
-                }
                 hashMap.put("count","5");
+                //请求数据
                 getData( hashMap );
+                //刷新完成
                 refreshLayout.finishRefresh( true );
             }
         } );
@@ -96,9 +96,18 @@ public class CircleFragment extends NBaseFragment<CirclePresenterImpl> implement
         refreshLayout.setOnLoadMoreListener( new OnLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                //每次下拉 进行i+1
+                i++;
+                if(i>1){
+                    HashMap<String, String> hashMap = new HashMap<>();
+                    String s = String.valueOf( i );
+                    hashMap.put( "page",s);
+                    hashMap.put("count","5");
+                    //请求数据
+                    getData( hashMap );
+                    refreshLayout.finishLoadMore( true );
+                }
 
-                Toast.makeText( getContext(), "0", Toast.LENGTH_SHORT ).show();
-                refreshLayout.finishLoadMore( true );
             }
         } );
 
@@ -122,14 +131,30 @@ public class CircleFragment extends NBaseFragment<CirclePresenterImpl> implement
         if (bean != null) {
             List<CircleListBean.ResultBean> result = bean.getResult();
             if (result != null) {
+                //对适配器进行了判空
                 if (adapter == null) {
                     adapter = new CircleListAdapter( result, getContext() );
                     recyclerCircle.setAdapter( adapter );
-                }else {
-                    adapter = null;
+
+                }else if(i==1){  //刷新新数据
+                    //请求到新数据的集合
                     List<CircleListBean.ResultBean> result1 = bean.getResult();
-                    adapter = new CircleListAdapter( result1, getContext() );
-                    recyclerCircle.setAdapter( adapter );
+                    //设置适配器数据
+                    adapter.setList( result1 );
+                    //刷新适配器
+                    adapter.notifyDataSetChanged();
+
+                }else { //上拉加载执行
+                    //获取当前适配器数据
+                    List<CircleListBean.ResultBean> list = adapter.getList();
+                    //获取当前加载第2/3/4/5……页数据
+                    List<CircleListBean.ResultBean> result1 = bean.getResult();
+                    //添加集合
+                    list.addAll( result1 );
+                    //设置适配器数据
+                    adapter.setList( list );
+                    //刷新适配器
+                    adapter.notifyDataSetChanged();
                 }
 
             }

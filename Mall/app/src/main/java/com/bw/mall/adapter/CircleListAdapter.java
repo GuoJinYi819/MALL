@@ -193,4 +193,8 @@ public class CircleListAdapter extends RecyclerView.Adapter<CircleListAdapter.My
     public List<CircleListBean.ResultBean> getList() {
         return list;
     }
+
+    public void setList(List<CircleListBean.ResultBean> list) {
+        this.list = list;
+    }
 }
